@@ -1,34 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center" >
+  <img src="https://user-images.githubusercontent.com/77810817/169426386-f9d19ca6-a102-47ce-836d-8a3d24ca5d7b.png" />
+</h1>
 
-## Getting Started
+<h4 align="center"/> Carrinho de compras </p>
 
-First, run the development server:
+![image](https://user-images.githubusercontent.com/77810817/169426269-a5f71be6-1e11-4b9c-86b6-d9b3fcb2a051.png)
 
-```bash
-npm run dev
-# or
-yarn dev
+
+## 📋 Tabela de conteúdos
+
+<!--ts-->
+
+* [Sobre](#sobre)
+* [Funcionalidades](#funcionalidades)
+* [Pre Requisitos](#requisitos)
+* [Como usar](#como-usar)
+* [Tecnologias](#tecnologias)
+
+<!--te-->
+
+<h4 align="center">
+  Projeto Finalizado 🚀  
+</h4>
+
+<h3 id="sobre">ℹ Sobre </h3>
+
+Projeto desenvolvido como parte do processo seletivo para a empresa Codeby.
+
+<h3 id="funcionalidades"> ✅ Funcionalidades </h3>
+ 
+- [x] Visualização dos produtos;
+- [X] Adição dos produtos no carrinho
+- [X] Verificação se haverá frete grátis
+- [X] Criação de uma api para retornar os itens
+
+
+<h3 id="tecnologias"> 📚 Tecnologias </h3>
+
+* React
+* Typescript
+* Next.js
+* ChakraUI
+
+<h3 id="requisitos">🔧 Pré Requisitos</h3> 
+
+ * [Git](https://git-scm.com)
+ * [Yarn](https://yarnpkg.com)
+ * Editor de código de sua preferência.
+
+<h3 id="como-usar">💻 Como usar</h3> 
+
 ```
+  # Clone esse projeto 
+  $ git clone 'https://github.com/Gustavo-Gava/CodebyCart'
+  
+  # Navegue até a pasta do projeto
+  $ cd ./codebycart
+  
+  # Instale as dependências
+  $ yarn
+  
+  # Rode o projeto
+  $ yarn dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  # Estará disponível em: http://localhost:3000
+```
