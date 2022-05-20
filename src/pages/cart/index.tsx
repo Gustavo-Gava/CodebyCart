@@ -44,7 +44,7 @@ export default function Cart() {
 
 			<Box>
 				{cart.map((item: ItemProps) => (
-					<CartItem item={item} />
+					<CartItem key={item.uniqueId} item={item} />
 				))}
 			</Box>
 
