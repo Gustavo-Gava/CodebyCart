@@ -1,10 +1,13 @@
 import { ChakraProvider } from "@chakra-ui/react"
+import { CartContextProvider } from "../contexts/CartContext"
 import { theme } from "../styles/theme"
 
 function MyApp({ Component, pageProps }) {
 	return (
 		<ChakraProvider theme={theme}>
-			<Component {...pageProps} />
+			<CartContextProvider>
+				<Component {...pageProps} />
+			</CartContextProvider>
 		</ChakraProvider>
 	)
 }
