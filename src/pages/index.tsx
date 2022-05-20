@@ -62,7 +62,9 @@ export default function Home() {
 			return newItemFormatted
 		})
 
-		setItems([...cheapestItemsFormatted, ...expensiveItemsFormatted])
+		// Fiz a lógica para integrar os itens vindo do json de abaixo de 10 reais, porém não integrei porque já estão inclusos json de acima de 10 reais
+
+		setItems([...expensiveItemsFormatted])
 	}
 
 	useEffect(() => {
@@ -92,7 +94,7 @@ export default function Home() {
 				</Link>
 			</Flex>
 
-			<Flex gap="4" wrap="wrap" mx="auto" justify="center">
+			<Flex gap="4" wrap="wrap" mx="auto" justify={["center", "center", "center", "start"]}>
 				{items.map((item) => (
 					<ShopItem key={item.uniqueId} item={item} onAddItemToCart={onAddItemToCart} />
 				))}
