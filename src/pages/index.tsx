@@ -1,4 +1,5 @@
 import { Box, Flex, Link, Text } from "@chakra-ui/react"
+import { Head } from "next/document"
 import { useRouter } from "next/router"
 import { ShoppingBag, ShoppingCart } from "phosphor-react"
 import { useCallback, useEffect, useState } from "react"
@@ -9,6 +10,7 @@ import { formatter } from "../utils/formatMoney"
 
 export interface ItemProps {
 	id: string
+	uniqueId: string
 	price: number
 	priceFormatted: string
 	sellingPrice: number
@@ -30,40 +32,40 @@ export default function Home() {
 		route.push("/cart")
 	}
 
+	const loadData = async () => {
+		const [cheapestItems, expensiveItems] = await Promise.all([
+			api.get("cheapestItems"),
+			api.get("expensiveItems"),
+		])
+
+		const cheapestItemsFormatted = cheapestItems.data.items.map((item) => {
+			const newItemFormatted = {
+				...item,
+				price: item.price / 100,
+				priceFormatted: formatter.format(item.price / 100),
+				sellingPrice: item.sellingPrice / 100,
+				sellingPriceFormatted: formatter.format(item.sellingPrice / 100),
+			}
+
+			return newItemFormatted
+		})
+
+		const expensiveItemsFormatted = expensiveItems.data.items.map((item) => {
+			const newItemFormatted = {
+				...item,
+				price: item.price / 100,
+				priceFormatted: formatter.format(item.price / 100),
+				sellingPrice: item.sellingPrice / 100,
+				sellingPriceFormatted: formatter.format(item.sellingPrice / 100),
+			}
+
+			return newItemFormatted
+		})
+
+		setItems([...cheapestItemsFormatted, ...expensiveItemsFormatted])
+	}
+
 	useEffect(() => {
-		const loadData = async () => {
-			const [cheapestItems, expensiveItems] = await Promise.all([
-				api.get("cheapestItems"),
-				api.get("expensiveItems"),
-			])
-
-			const cheapestItemsFormatted = cheapestItems.data.items.map((item) => {
-				const newItemFormatted = {
-					...item,
-					price: item.price / 100,
-					priceFormatted: formatter.format(item.price / 100),
-					sellingPrice: item.sellingPrice / 100,
-					sellingPriceFormatted: formatter.format(item.sellingPrice / 100),
-				}
-
-				return newItemFormatted
-			})
-
-			const expensiveItemsFormatted = expensiveItems.data.items.map((item) => {
-				const newItemFormatted = {
-					...item,
-					price: item.price / 100,
-					priceFormatted: formatter.format(item.price / 100),
-					sellingPrice: item.sellingPrice / 100,
-					sellingPriceFormatted: formatter.format(item.sellingPrice / 100),
-				}
-
-				return newItemFormatted
-			})
-
-			setItems([...cheapestItemsFormatted, ...expensiveItemsFormatted])
-		}
-
 		loadData()
 	}, [])
 
@@ -92,7 +94,7 @@ export default function Home() {
 
 			<Flex gap="4" wrap="wrap" mx="auto" justify="center">
 				{items.map((item) => (
-					<ShopItem item={item} onAddItemToCart={onAddItemToCart} />
+					<ShopItem key={item.uniqueId} item={item} onAddItemToCart={onAddItemToCart} />
 				))}
 			</Flex>
 		</Box>
