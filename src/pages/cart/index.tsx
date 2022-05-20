@@ -8,14 +8,14 @@ import { useCart } from "../../contexts/CartContext"
 import { formatter } from "../../utils/formatMoney"
 
 export default function Cart() {
-	const { cart, setCart } = useCart()
+	const { cart } = useCart()
 	const route = useRouter()
 
 	const totalPrice = useMemo(() => {
 		return cart.reduce((total, product) => {
 			return total + product.sellingPrice
 		}, 0)
-	}, [cart])
+	}, [cart.length])
 
 	const totalPriceFormatted = useMemo(() => {
 		return formatter.format(totalPrice)
