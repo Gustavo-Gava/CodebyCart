@@ -13,7 +13,8 @@ export function ShopItem({ item, onAddItemToCart }: ShopItemProps) {
 			<Img w="52" mx="auto" src={item.imageUrl} />
 
 			<Text fontSize="md">{item.name}</Text>
-			<Text fontWeight="bold">{item.priceFormatted}</Text>
+			<Text color="gray.500">{item.priceFormatted}</Text>
+			<Text fontWeight="bold">{item.sellingPriceFormatted}</Text>
 
 			<Button
 				leftIcon={<ShoppingCart />}

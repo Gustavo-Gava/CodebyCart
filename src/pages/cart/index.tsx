@@ -1,20 +1,41 @@
-import { Box, Button, Divider, Flex, Img, Text } from "@chakra-ui/react"
+import { Box, Button, Divider, Flex, Icon, Img, Text } from "@chakra-ui/react"
+import { useRouter } from "next/router"
+import { CaretLeft } from "phosphor-react"
 import { useMemo } from "react"
 import { ItemProps } from ".."
 import { CartItem } from "../../components/CartItem"
 import { useCart } from "../../contexts/CartContext"
+import { formatter } from "../../utils/formatMoney"
 
 export default function Cart() {
 	const { cart, setCart } = useCart()
+	const route = useRouter()
 
 	const totalPrice = useMemo(() => {
 		return cart.reduce((total, product) => {
-			return total + product.price
+			return total + product.sellingPrice
 		}, 0)
 	}, [cart])
 
+	const totalPriceFormatted = useMemo(() => {
+		return formatter.format(totalPrice)
+	}, [totalPrice])
+
+	function handleNavigateBack() {
+		route.back()
+	}
+
 	return (
-		<Box maxW={450} mx="auto" mt="12" bgColor="white" borderRadius="8">
+		<Box maxW={480} mx="auto" mt="12" bgColor="white" borderRadius="8" position="relative">
+			<Box position="absolute" top="4" left="4">
+				<Icon
+					as={CaretLeft}
+					fontSize={22}
+					_hover={{ opacity: 0.9, cursor: "pointer" }}
+					onClick={handleNavigateBack}
+				/>
+			</Box>
+
 			<Text as="h2" textAlign="center" fontWeight="700" fontSize="xl" py="3">
 				Meu Carrinho
 			</Text>
@@ -32,7 +53,7 @@ export default function Cart() {
 			<Flex flexDir="column" align="center" justify="center">
 				<Flex w="full" align="center" justify="space-between" px="4" py="3">
 					<Text fontWeight="bold">Total</Text>
-					<Text fontWeight="bold">R$ {totalPrice}</Text>
+					<Text fontWeight="bold">{totalPriceFormatted}</Text>
 				</Flex>
 
 				{totalPrice >= 10 && (

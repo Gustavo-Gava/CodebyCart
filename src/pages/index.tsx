@@ -11,6 +11,8 @@ export interface ItemProps {
 	id: string
 	price: number
 	priceFormatted: string
+	sellingPrice: number
+	sellingPriceFormatted: string
 	name: string
 	imageUrl: string
 }
@@ -22,7 +24,6 @@ export default function Home() {
 
 	function onAddItemToCart(item: ItemProps) {
 		setCart((prevValue) => [...prevValue, item])
-		console.log(cart)
 	}
 
 	function handleNavigateToCart() {
@@ -41,6 +42,8 @@ export default function Home() {
 					...item,
 					price: item.price / 100,
 					priceFormatted: formatter.format(item.price / 100),
+					sellingPrice: item.sellingPrice / 100,
+					sellingPriceFormatted: formatter.format(item.sellingPrice / 100),
 				}
 
 				return newItemFormatted
@@ -51,6 +54,8 @@ export default function Home() {
 					...item,
 					price: item.price / 100,
 					priceFormatted: formatter.format(item.price / 100),
+					sellingPrice: item.sellingPrice / 100,
+					sellingPriceFormatted: formatter.format(item.sellingPrice / 100),
 				}
 
 				return newItemFormatted
