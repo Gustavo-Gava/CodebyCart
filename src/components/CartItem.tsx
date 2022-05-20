@@ -1,25 +1,25 @@
 import { Flex, Box, Text, Img } from "@chakra-ui/react"
+import { ItemProps } from "../pages"
 
-export function CartItem() {
+interface CartItemProps {
+	item: ItemProps
+}
+
+export function CartItem({ item }: CartItemProps) {
 	return (
 		<Flex p="4" gap="2">
-			<Img
-				src="http://codeby.vteximg.com.br/arquivos/ids/159959-800-1029/truffon-meio-amargo.png?v=636930938547630000"
-				w="20"
-				h="20"
-				border="1px solid #c4c4c4"
-			/>
+			<Img src={item.imageUrl} w="20" border="1px solid #c4c4c4" />
 
 			<Box>
 				<Text fontWeight="bold" fontSize="medium" mb="2">
-					Trufa de morango
+					{item.name}
 				</Text>
 
 				<Text fontSize={12} color="gray.500" lineHeight={1}>
-					R$ 1,23
+					{item.priceFormatted}
 				</Text>
 				<Text fontWeight="500" fontSize="md">
-					R$ 1,11
+					{item.priceFormatted}
 				</Text>
 			</Box>
 		</Flex>
