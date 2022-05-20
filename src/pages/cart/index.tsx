@@ -65,7 +65,14 @@ export default function Cart() {
 			<Box as="hr" w="100%" h="1px" bgColor="gray.500" />
 
 			<Flex as="footer" px="4" py="3" align="center" justify="center">
-				<Button colorScheme="twitter" bgColor="blue.500" color="white" w="full" py="6">
+				<Button
+					colorScheme="twitter"
+					bgColor="blue.500"
+					color="white"
+					w="full"
+					py="6"
+					fontWeight="bold"
+				>
 					Finalizar Compra
 				</Button>
 			</Flex>

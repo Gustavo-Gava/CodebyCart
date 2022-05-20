@@ -8,6 +8,10 @@ export const theme = extendTheme({
     },
     blue: {
       "500": "#3c74ed"
+    },
+    green: {
+      "200" : "#c7ffa6",
+      
     }
   },
   styles: {
